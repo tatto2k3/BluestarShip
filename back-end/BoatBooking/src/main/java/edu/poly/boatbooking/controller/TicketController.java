@@ -1,6 +1,11 @@
 package edu.poly.boatbooking.controller;
 
+import edu.poly.boatbooking.dto.CustomerDto;
+import edu.poly.boatbooking.dto.ScheduleDto;
 import edu.poly.boatbooking.dto.TicketDto;
+import edu.poly.boatbooking.dto.TicketReviewDto;
+import edu.poly.boatbooking.service.CustomerService;
+import edu.poly.boatbooking.service.ScheduleService;
 import edu.poly.boatbooking.service.TicketService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,11 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketController {
     private TicketService ticketService;
+    private CustomerService customerService;
+    private ScheduleService scheduleService;
 
     @PostMapping
     public ResponseEntity<TicketDto> createTicket(@RequestBody TicketDto ticketDto) {
@@ -41,8 +49,24 @@ public class TicketController {
     }
 
     @DeleteMapping
-    public ResponseEntity<String> deleteTicket(@PathVariable("id") Long ticketId){
+    public ResponseEntity<String> deleteTicket(@RequestParam("id") Long ticketId){
         ticketService.deleteTicket(ticketId);
         return ResponseEntity.ok("Delete ticket successfully!");
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> findTicket (@RequestParam String name){
+        CustomerDto customer = customerService.findCutomerByName(name);
+        if (customer != null) {
+            TicketDto ticket = ticketService.findByC_id(customer.getId());
+            if (ticket != null) {
+                ScheduleDto schedule = scheduleService.getScheduleById(ticket.getSId());
+                if (schedule != null) {
+                    TicketReviewDto result = new TicketReviewDto(customer.getName(), customer.getNum_id(), schedule.getBoat_name(), ticket.getSId(), ticket.getSeatId(), schedule.getDepartureDay(), schedule.getDepartureTime(), schedule.getArrivalTime(), schedule.getDepartureDay());
+                    return ResponseEntity.ok().body(result);
+                }
+            }
+        }
+        return ResponseEntity.notFound().build();
     }
 }

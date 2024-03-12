@@ -49,7 +49,6 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.findById(customerId).orElseThrow(
                 () -> new ResourceNotFoundException("Boat is not exists with given id: " + customerId)
         );
-
         customer.setName(updatedCustomer.getName());
         customer.setNumId(updatedCustomer.getNum_id());
         customer.setBirth(updatedCustomer.getBirth());
@@ -67,4 +66,12 @@ public class CustomerServiceImpl implements CustomerService {
 
         customerRepository.deleteById(customerId);
     }
+
+    @Override
+    public CustomerDto findCutomerByName(String name) {
+        Customer customer = customerRepository.findCustomerByName(name);
+        return CustomerMapper.mapToCustomerDto(customer);
+    }
+
+
 }

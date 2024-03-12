@@ -15,4 +15,5 @@ public class CustomerDto {
     private String num_id;
     private String birth;
     private String address;
+    private String email;
 }

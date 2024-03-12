@@ -10,7 +10,8 @@ public class CustomerMapper {
                 customer.getName(),
                 customer.getNumId(),
                 customer.getBirth(),
-                customer.getAddress()
+                customer.getAddress(),
+                customer.getEmail()
         );
     }
     public static Customer mapToCustomer(CustomerDto customerDto) {
@@ -19,7 +20,8 @@ public class CustomerMapper {
                 customerDto.getName(),
                 customerDto.getNum_id(),
                 customerDto.getBirth(),
-                customerDto.getAddress()
+                customerDto.getAddress(),
+                customerDto.getEmail()
         );
     }
 

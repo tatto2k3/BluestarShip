@@ -7,17 +7,17 @@ public class TicketMapper {
     public static TicketDto mapToTicketDto (Ticket ticket) {
         return new TicketDto(
                 ticket.getId(),
-                ticket.getS_id(),
-                ticket.getC_id(),
-                ticket.getSeat_id()
+                ticket.getSId(),
+                ticket.getCId(),
+                ticket.getSeatId()
         );
     }
     public static Ticket mapToTicket(TicketDto ticketDto) {
         return new Ticket(
                 ticketDto.getId(),
-                ticketDto.getS_id(),
-                ticketDto.getC_id(),
-                ticketDto.getSeat_id()
+                ticketDto.getSId(),
+                ticketDto.getCId(),
+                ticketDto.getSeatId()
         );
     }
 }

@@ -17,9 +17,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "s_id")
-    private Long s_id;
+    private Long SId;
     @Column(name = "c_id")
-    private Long c_id;
+    private Long CId;
     @Column(name= "seat_id")
-    private String seat_id;
+    private String SeatId;
 }

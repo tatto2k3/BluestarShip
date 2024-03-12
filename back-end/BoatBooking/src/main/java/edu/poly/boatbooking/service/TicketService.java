@@ -15,4 +15,6 @@ public interface TicketService {
     TicketDto updatedTicket(Long ticketId, TicketDto updatedTicket);
 
     void deleteTicket(Long ticketId);
+
+    TicketDto findByC_id(Long cId);
 }

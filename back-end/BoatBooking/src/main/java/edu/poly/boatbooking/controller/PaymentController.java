@@ -129,9 +129,9 @@ public class PaymentController {
         Long c_id = customerRepository.findCustomerIdByNumId(customer_identify).getId();
         long ticket_schedule = schedule;
         Ticket ticket = new Ticket();
-        ticket.setSeat_id(seat_id);
-        ticket.setC_id(c_id);
-        ticket.setS_id(ticket_schedule);
+        ticket.setSeatId(seat_id);
+        ticket.setCId(c_id);
+        ticket.setSId(ticket_schedule);
         ticket = ticketRepository.save(ticket);
 
         return ResponseEntity.status(HttpStatus.OK).body(paymentDto.getURL());

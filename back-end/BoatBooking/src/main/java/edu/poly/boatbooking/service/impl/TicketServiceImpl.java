@@ -48,9 +48,9 @@ public class TicketServiceImpl implements TicketService {
                 () -> new ResourceNotFoundException("Ticket is not exists with given id: " + ticketId)
         );
 
-        ticket.setC_id(updatedTicket.getC_id());
-        ticket.setS_id(updatedTicket.getS_id());
-        ticket.setSeat_id(updatedTicket.getSeat_id());
+        ticket.setCId(updatedTicket.getCId());
+        ticket.setSId(updatedTicket.getSId());
+        ticket.setSeatId(updatedTicket.getSeatId());
 
         Ticket updatedTicketObj = ticketRepository.save(ticket);
         return TicketMapper.mapToTicketDto(updatedTicketObj);
@@ -64,4 +64,11 @@ public class TicketServiceImpl implements TicketService {
 
         ticketRepository.deleteById(ticketId);
     }
+
+    @Override
+    public TicketDto findByC_id(Long cId) {
+        Ticket ticket = ticketRepository.findByCId(cId);
+        return TicketMapper.mapToTicketDto(ticket);
+    }
+
 }

@@ -14,4 +14,7 @@ public interface CustomerService {
     CustomerDto updatedCustomer(Long customerId, CustomerDto updatedCustomer);
 
     void deleteCustomer(Long customerId);
+
+    CustomerDto findCutomerByName(String name);
+
 }
