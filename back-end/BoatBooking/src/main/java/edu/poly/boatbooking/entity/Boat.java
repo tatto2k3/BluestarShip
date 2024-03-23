@@ -14,6 +14,7 @@ import lombok.Setter;
 @Table(name = "boats")
 public class Boat {
     @Id
+    @Column(unique = true)
     private Long id;
 
     @Column(name = "name")

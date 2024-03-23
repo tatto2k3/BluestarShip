@@ -7,6 +7,8 @@ import edu.poly.boatbooking.mapper.BoatMapper;
 import edu.poly.boatbooking.repository.BoatRepository;
 import edu.poly.boatbooking.service.BoatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,9 +27,12 @@ public class BoatServiceImpl implements BoatService {
     public BoatDto createBoat(BoatDto boatDto) {
 
         Boat boat = BoatMapper.mapToBoat(boatDto);
-        Boat saveBoat = boatRepository.save(boat);
-
-        return BoatMapper.mapToBoatDto(saveBoat);
+        if (!boatRepository.existsById(boat.getId())) {
+            Boat saveBoat = boatRepository.save(boat);
+            return BoatMapper.mapToBoatDto(saveBoat);
+        } else {
+            return null;
+        }
     }
 
     @Override

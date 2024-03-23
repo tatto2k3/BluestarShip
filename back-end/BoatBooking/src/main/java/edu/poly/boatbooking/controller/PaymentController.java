@@ -19,7 +19,7 @@ import java.util.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/payment")
+@RequestMapping("/api/v1/auth/payment")
 public class PaymentController {
 
     private CustomerRepository customerRepository;

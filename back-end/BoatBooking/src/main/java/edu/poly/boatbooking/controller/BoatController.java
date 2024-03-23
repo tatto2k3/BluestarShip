@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/boats")
+@RequestMapping("/api/v1/admin/boats")
 public class BoatController {
     private BoatService boatService;
 
     @PostMapping
     public ResponseEntity<BoatDto> createBoat(@RequestBody BoatDto boatDto){
         BoatDto savedBoat = boatService.createBoat(boatDto);
+        if (savedBoat == null) return new ResponseEntity<>(savedBoat, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(savedBoat, HttpStatus.CREATED);
     }
 

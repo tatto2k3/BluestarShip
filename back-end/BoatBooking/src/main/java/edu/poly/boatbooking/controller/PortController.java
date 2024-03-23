@@ -12,7 +12,7 @@ import java.util.List;
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/ports")
+@RequestMapping("/api/v1/auth/ports")
 public class PortController {
     private PortService portService;
 

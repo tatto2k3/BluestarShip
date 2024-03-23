@@ -15,7 +15,7 @@ import java.util.Map;
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/seats")
+@RequestMapping("/api/v1/auth/seats")
 public class SeatController {
     private SeatService scheduleService;
 

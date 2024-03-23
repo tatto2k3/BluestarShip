@@ -16,7 +16,7 @@ import java.util.Map;
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/schedule")
+@RequestMapping("/api/v1/auth/schedule")
 public class ScheduleController {
     private ScheduleService scheduleService;
 

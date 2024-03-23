@@ -57,6 +57,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         schedule.setDepartureDay(updatedSchedule.getDepartureDay());
         schedule.setDepartureTime(updatedSchedule.getDepartureTime());
         schedule.setPrice(updatedSchedule.getPrice());
+        schedule.setArrivalTime(updatedSchedule.getArrivalTime());
 
 
         Schedule updatedScheduleObj = scheduleRepository.save(schedule);
