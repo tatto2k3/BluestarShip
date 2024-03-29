@@ -7,16 +7,16 @@ const SearchTicket = () => {
     const [searchInfo, setSearchInfo] = useState({
         tenKhachHang: '',
         ngaySinh: '',
-        maChuyenBay: ''
+        CCCD: ''
     });
 
-    const handleShowInfo = async () => {
+    const handleShowInfo = async (event) => {
+        event.preventDefault();
+        console.log(searchInfo);
         try {
-            const response = await fetch(`/api/ticket/GetTicketReviewDetails?name=${searchInfo.tenKhachHang}`);
+            const response = await fetch(`http://localhost:8080/api/tickets/search?name=${searchInfo.tenKhachHang}`);
             const data = await response.json();
-
             console.log("Data from API:", data);
-
             navigate('/ticket-review', { state: { selectedCustomerInfo: data } });
         } catch (error) {
             console.error("Error fetching ticket details:", error);
@@ -30,7 +30,7 @@ const SearchTicket = () => {
         </div>
 
         <div className="inforSearch">
-            <form className="form-signin2">
+            <form className="form-signin2" onSubmit={handleShowInfo}>
                         <div className="mb-3 row text-xl-center">
                             <label htmlFor="inputFullname" className="col-sm-2 col-form-label">Họ và Tên</label>
                             <div className="col-sm-10">
@@ -51,8 +51,8 @@ const SearchTicket = () => {
                                     type="date"
                                     className="form-controlSearchTicket"
                                     id="inputDay"
-                                    value={searchInfo.ngayKhoiHanh}
-                                    onChange={(e) => setSearchInfo({ ...searchInfo, ngayKhoiHanh: e.target.value })}
+                                    value={searchInfo.ngaySinh}
+                                    onChange={(e) => setSearchInfo({ ...searchInfo, ngaySinh: e.target.value })}
                                 />
                             </div>
                         </div>
@@ -63,8 +63,8 @@ const SearchTicket = () => {
                                     type="text"
                                     className="form-controlSearchTicket"
                                     id="inputTicketCode"
-                                    value={searchInfo.maVe}
-                                    onChange={(e) => setSearchInfo({ ...searchInfo, maVe: e.target.value })}
+                                    value={searchInfo.CCCD}
+                                    onChange={(e) => setSearchInfo({ ...searchInfo, CCCD: e.target.value })}
                                 />
                             </div>
                         </div>
@@ -72,10 +72,9 @@ const SearchTicket = () => {
                         <div className="row text-xl-center">
                             <div className="col-sm-10">
                                 <button
-                                    type="button"
+                                    type="submit"
                                     className="btn search"
                                     id="btnSearch"
-                                    onClick={handleShowInfo}
                                 >
                                     Tìm
                                 </button>

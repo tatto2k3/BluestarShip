@@ -19,6 +19,7 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<CustomerDto> createCustomer(@RequestBody CustomerDto customerDto) {
         CustomerDto savedCustomer = customerService.createCustomer(customerDto);
+        if (savedCustomer == null) return new ResponseEntity<>(savedCustomer, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
 
@@ -41,7 +42,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable("id") Long customerId){
         customerService.deleteCustomer(customerId);
         return ResponseEntity.ok("Delete customer successfully@!");

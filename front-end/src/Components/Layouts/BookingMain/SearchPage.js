@@ -40,7 +40,7 @@ export default function SearchPage() {
                 setDepartFlight(flight);
                 setActiveButton("Arrive");
                 setIsLoading(true);
-                axios.get(`http://localhost:8080/api/schedule/search?fromLocation=${searchInfo.ToLocation}&toLocation=${searchInfo.FromLocation}&depatureDay=${searchInfo.ComeBackTime}`)
+                axios.get(`http://localhost:8080/api/v1/auth/schedule/search?fromLocation=${searchInfo.ToLocation}&toLocation=${searchInfo.FromLocation}&depatureDay=${searchInfo.ComeBackTime}`)
                     .then(res => {
                         setSearchResult(res.data)
                         setIsLoading(false);
@@ -67,7 +67,7 @@ export default function SearchPage() {
     function HandleReset() {
         setIsLoading(true);
         setActiveTimeLine(null);
-        axios.get(`http://localhost:8080/api/schedule/search?fromLocation=${searchInfo.FromLocation}&toLocation=${searchInfo.ToLocation}
+        axios.get(`http://localhost:8080/api/v1/auth/schedule/search?fromLocation=${searchInfo.FromLocation}&toLocation=${searchInfo.ToLocation}
                                 &departureDay=${searchInfo.DepartTime}`)
             .then(res => {
                 setSearchResult(res.data)
@@ -80,7 +80,7 @@ export default function SearchPage() {
         if (searchInfo.FromLocation != null && searchInfo.ToLocation != null && searchInfo.DepartTime != null && searchInfo.ComeBackTime != null) {
             if (activeButton === "Depart") {
                 setIsLoading(true);
-                axios.get(`http://localhost:8080/api/schedule/search?fromLocation=${searchInfo.FromLocation}&toLocation=${searchInfo.ToLocation}&DepartureTime=${depatureTime}&ArrivalTime=${arrivalTime}
+                axios.get(`http://localhost:8080/api/v1/auth/schedule/search?fromLocation=${searchInfo.FromLocation}&toLocation=${searchInfo.ToLocation}&DepartureTime=${depatureTime}&ArrivalTime=${arrivalTime}
                                 &departureDay=${searchInfo.DepartTime}`)
                     .then(res => {
                         setSearchResult(res.data)
@@ -91,7 +91,7 @@ export default function SearchPage() {
             }
             else {
                 setIsLoading(true);
-                axios.get(`http://localhost:8080/api/schedule/search?fromLocation=${searchInfo.ToLocation}&toLocation=${searchInfo.FromLocation}&departureTime=${depatureTime}&arrivalTime=${arrivalTime}
+                axios.get(`http://localhost:8080/api/v1/auth/schedule/search?fromLocation=${searchInfo.ToLocation}&toLocation=${searchInfo.FromLocation}&departureTime=${depatureTime}&arrivalTime=${arrivalTime}
                                     &departureDay=${searchInfo.ComeBackTime}`)
                     .then(res => {
                         setSearchResult(res.data)

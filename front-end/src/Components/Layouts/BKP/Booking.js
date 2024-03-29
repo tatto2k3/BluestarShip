@@ -17,7 +17,7 @@ export default function Booking() {
     const GetAllCountries = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/api/ports"
+                "http://localhost:8080/api/v1/auth/ports"
             );
             setCountries(response.data);
         } catch (error) {
@@ -280,7 +280,7 @@ export default function Booking() {
                                 console.log(searchInfo.FromLocation);
                                 console.log(searchInfo.ToLocation);
 
-                                axios.get(`http://localhost:8080/api/schedule/search?fromLocation=${searchInfo.FromLocation}&toLocation=${searchInfo.ToLocation}&departureDay=${searchInfo.DepartTime}`)
+                                axios.get(`http://localhost:8080/api/v1/auth/schedule/search?fromLocation=${searchInfo.FromLocation}&toLocation=${searchInfo.ToLocation}&departureDay=${searchInfo.DepartTime}`)
                                     .then(res => {
                                         setSearchResult(res.data)
                                         setIsLoading(false);

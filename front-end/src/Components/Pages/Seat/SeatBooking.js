@@ -17,7 +17,7 @@ export default function SeatBooking() {
     console.log('Seat ID', seatId)
     useEffect(() => {
         // Fetch data from the API using Axios
-        axios.get('http://localhost:8080/api/seats/all')
+        axios.get('http://localhost:8080/api/v1/auth/seats/all')
             .then(response => {
                 // Set the fetched data to the state
                 setSeat(response.data);

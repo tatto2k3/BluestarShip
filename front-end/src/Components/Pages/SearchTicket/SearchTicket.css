@@ -2,14 +2,16 @@
     height: 550px;
 }
 .text-insertSearch{
-    width: 550px; /* Đặt chiều rộng cho form */
+    width: 550px;
     position: absolute;
-    top: 58%; /* Đặt vị trí ở giữa theo chiều cao */
-    left: 50%; /* Đặt vị trí ở giữa theo chiều rộng */
-    transform: translate(-50%, -50%); /* Dịch chuyển form để nằm chính giữa */
+    top: 20%;
+    left: 55%;
+    transform: translate(-50%, -50%);
     font-family: "open sans";
     font-weight: 100;
     padding: 5px;
+    font-family: var(--font-secondary);
+    color: var(--color-black);
 }
 
 
@@ -21,13 +23,12 @@
     border-radius: 35px;
     background: #FFFFFF;
     position: absolute;
-    top: 150px;
+    top: 180px;
     left: 340px;
 }
 
 
 .form-signin2 {
-    
     margin-top: 60px;
     margin-left: 120px;
     color: black;
@@ -43,9 +44,9 @@
     margin-bottom: 20px; */
 
 
- .search {
+#btnSearch {
     margin: 15px auto;
-    background: #0F5A90;
+    background-color: #0F5A90;
     color: #FBF8F8;
     font-family: open sans;
     font-size: 16px;

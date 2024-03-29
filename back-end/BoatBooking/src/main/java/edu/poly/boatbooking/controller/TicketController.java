@@ -17,7 +17,7 @@ import java.util.List;
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/tickets")
+@RequestMapping("/api/v1/admin/tickets")
 public class TicketController {
     private TicketService ticketService;
     private CustomerService customerService;
@@ -26,6 +26,7 @@ public class TicketController {
     @PostMapping
     public ResponseEntity<TicketDto> createTicket(@RequestBody TicketDto ticketDto) {
         TicketDto savedTicket = ticketService.createTicket(ticketDto);
+        if (savedTicket == null) return new ResponseEntity<>(savedTicket, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(savedTicket, HttpStatus.CREATED);
     }
 
@@ -48,7 +49,7 @@ public class TicketController {
         return ResponseEntity.ok(ticketDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteTicket(@RequestParam("id") Long ticketId){
         ticketService.deleteTicket(ticketId);
         return ResponseEntity.ok("Delete ticket successfully!");

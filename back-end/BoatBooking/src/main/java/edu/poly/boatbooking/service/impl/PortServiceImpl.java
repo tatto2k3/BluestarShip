@@ -1,8 +1,10 @@
 package edu.poly.boatbooking.service.impl;
 
 import edu.poly.boatbooking.dto.PortDto;
+import edu.poly.boatbooking.entity.Boat;
 import edu.poly.boatbooking.entity.Port;
 import edu.poly.boatbooking.exception.ResourceNotFoundException;
+import edu.poly.boatbooking.mapper.BoatMapper;
 import edu.poly.boatbooking.mapper.PortMapper;
 import edu.poly.boatbooking.repository.PortRepository;
 import edu.poly.boatbooking.service.PortService;
@@ -23,9 +25,12 @@ public class PortServiceImpl implements PortService {
     @Override
     public PortDto createPort(PortDto portDto) {
         Port port = PortMapper.mapToPort(portDto);
-        Port saveCustomer = portRepository.save(port);
-
-        return PortMapper.mapToPortDto(saveCustomer);
+        if (!portRepository.existsById(port.getId())) {
+            Port savePort = portRepository.save(port);
+            return PortMapper.mapToPortDto(savePort);
+        } else {
+            return null;
+        }
     }
 
     @Override

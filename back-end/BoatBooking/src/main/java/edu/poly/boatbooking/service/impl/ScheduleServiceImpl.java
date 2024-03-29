@@ -1,8 +1,10 @@
 package edu.poly.boatbooking.service.impl;
 
 import edu.poly.boatbooking.dto.ScheduleDto;
+import edu.poly.boatbooking.entity.Boat;
 import edu.poly.boatbooking.entity.Schedule;
 import edu.poly.boatbooking.exception.ResourceNotFoundException;
+import edu.poly.boatbooking.mapper.BoatMapper;
 import edu.poly.boatbooking.mapper.ScheduleMapper;
 import edu.poly.boatbooking.repository.ScheduleRepository;
 import edu.poly.boatbooking.service.ScheduleService;
@@ -24,9 +26,12 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public ScheduleDto createSchedule(ScheduleDto scheduleDto) {
         Schedule schedule = ScheduleMapper.mapToSchedule(scheduleDto);
-        Schedule saveSchedule = scheduleRepository.save(schedule);
-
-        return ScheduleMapper.mapToScheduleDto(saveSchedule);
+        if (!scheduleRepository.existsById(schedule.getId())) {
+            Schedule saveSchedule = scheduleRepository.save(schedule);
+            return ScheduleMapper.mapToScheduleDto(saveSchedule);
+        } else {
+            return null;
+        }
     }
 
     @Override

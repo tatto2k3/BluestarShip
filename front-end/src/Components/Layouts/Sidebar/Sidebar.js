@@ -58,53 +58,35 @@ const Sidebar = ({ children }) => {
                 <span className="submenu-icon ml-auto" />
               </div>
             </a>
-            <a href="/KhachHang" className="bg-transparent list-group-item list-group-item-action flex-column align-items-start">
+            <a href="customer" className="bg-transparent list-group-item list-group-item-action flex-column align-items-start">
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <i className="bi bi-people" />
                 <span className="menu-collapsed">Khách hàng</span>
                 <span className="submenu-icon ml-auto" />
               </div>
             </a>
-            <a href="/Ve" className="bg-transparent list-group-item list-group-item-action">
+            <a href="ticket" className="bg-transparent list-group-item list-group-item-action">
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <i className="bi bi-ticket-detailed" />
                 <span className="menu-collapsed">Vé</span>    
               </div>
             </a>
-            <a href="/MayBay" className="bg-transparent list-group-item list-group-item-action">
+            <a href="/admin/boat" className="bg-transparent list-group-item list-group-item-action">
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <i className="bi bi-airplane" />
-                <span className="menu-collapsed"> Máy bay</span>
+                <span className="menu-collapsed">Tàu khách</span>
               </div>
             </a>
-            <a href="ChuyenBay" className="bg-transparent list-group-item list-group-item-action">
+            <a href="schedule" className="bg-transparent list-group-item list-group-item-action">
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <i className="bi bi-airplane-engines-fill" />
-                <span className="menu-collapsed">Chuyến bay</span>
+                <span className="menu-collapsed">Lịch hoạt động</span>
               </div>
             </a>
-            <a href="/SanBay" className="bg-transparent list-group-item list-group-item-action">
+            <a href="port" className="bg-transparent list-group-item list-group-item-action">
               <div className="d-flex w-100 justify-content-start align-items-center">
                 <i className="bi bi-geo-alt" />
                 <span className="menu-collapsed">Sân bay</span>
-              </div>
-            </a>
-            <a href="/HanhLy" data-toggle="sidebar-colapse" className="bg-transparent list-group-item list-group-item-action d-flex align-items-center">
-              <div className="d-flex w-100 justify-content-start align-items-center">
-                <i className="bi bi-duffle" />
-                <span id="collapse-text" className="menu-collapsed">Hành lý</span>
-              </div>
-            </a>
-            <a href="/DoAn" data-toggle="sidebar-colapse" className="bg-transparent list-group-item list-group-item-action d-flex align-items-center">
-              <div className="d-flex w-100 justify-content-start align-items-center">
-                <i className="bi bi-cup-hot" />
-                <span id="collapse-text" className="menu-collapsed">Đồ ăn</span>
-              </div>
-            </a>
-            <a href="/MaGiamGia" data-toggle="sidebar-colapse" className="bg-transparent list-group-item list-group-item-action d-flex align-items-center">
-              <div className="d-flex w-100 justify-content-start align-items-center">
-                <i className="bi bi-gift" />
-                                <span id="collapse-text" className="menu-collapsed">Mã giảm giá <span className="badge badge-pill badge-dark ml-2">{discountCount}</span> </span>
               </div>
             </a>
             {/* Logo */}

@@ -1,8 +1,10 @@
 package edu.poly.boatbooking.service.impl;
 
 import edu.poly.boatbooking.dto.TicketDto;
+import edu.poly.boatbooking.entity.Boat;
 import edu.poly.boatbooking.entity.Ticket;
 import edu.poly.boatbooking.exception.ResourceNotFoundException;
+import edu.poly.boatbooking.mapper.BoatMapper;
 import edu.poly.boatbooking.mapper.TicketMapper;
 import edu.poly.boatbooking.repository.TicketRepository;
 import edu.poly.boatbooking.service.TicketService;
@@ -22,9 +24,12 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public TicketDto createTicket(TicketDto ticketDto) {
         Ticket ticket = TicketMapper.mapToTicket(ticketDto);
-        Ticket saveTicket = ticketRepository.save(ticket);
-
-        return TicketMapper.mapToTicketDto(saveTicket);
+        if (!ticketRepository.existsById(ticket.getId())) {
+            Ticket saveTicket = ticketRepository.save(ticket);
+            return TicketMapper.mapToTicketDto(saveTicket);
+        } else {
+            return null;
+        }
     }
 
     @Override

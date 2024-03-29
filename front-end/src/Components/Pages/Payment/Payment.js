@@ -91,7 +91,7 @@ export default function Payment() {
                     <button className="payment-zalopay"
                             onClick={() => {
                                 console.log(jsonData);
-                                  axios.post("http://localhost:8080/api/payment/create_payment", jsonData)
+                                  axios.post("http://localhost:8080/api/v1/auth/payment/create_payment", jsonData)
                                        .then(response => {
                                            console.log('Response:', response.data);
                                            const  order_url = response.data;

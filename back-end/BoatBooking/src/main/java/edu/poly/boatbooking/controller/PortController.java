@@ -19,6 +19,7 @@ public class PortController {
     @PostMapping
     public ResponseEntity<PortDto> createPort(@RequestBody PortDto portDto) {
         PortDto savedPort = portService.createPort(portDto);
+        if (savedPort == null) return new ResponseEntity<>(savedPort, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(savedPort, HttpStatus.CREATED);
     }
 
@@ -41,7 +42,7 @@ public class PortController {
         return ResponseEntity.ok(portDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deletePort(@PathVariable("id") Long portId){
         portService.deletePort(portId);
         return ResponseEntity.ok("Delete port successfully!");

@@ -23,6 +23,7 @@ public class ScheduleController {
     @PostMapping
     public ResponseEntity<ScheduleDto> createSchedule(@RequestBody ScheduleDto scheduleDto) {
         ScheduleDto savedSchedule = scheduleService.createSchedule(scheduleDto);
+        if (savedSchedule == null) return new ResponseEntity<>(savedSchedule, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(savedSchedule, HttpStatus.CREATED);
     }
 
@@ -60,7 +61,7 @@ public class ScheduleController {
         return ResponseEntity.ok(scheduleDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deletePort(@PathVariable("id") Long scheduleId){
         scheduleService.deleteSchedule(scheduleId);
         return ResponseEntity.ok("Delete schedule successfully!");

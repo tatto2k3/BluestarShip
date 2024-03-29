@@ -26,14 +26,14 @@ export default function Header() {
                 <img className='img-logo' src={logo} alt="Logo" />
 
                 <ul className='navbar-links'>
-                    <li><a href='/'>Trang chủ</a></li>
-                    <li><a href='/search-ticket'>Tra cứu</a></li>
-                    <li><a href='/explore'>Khám phá</a></li>
-                    <li><a href='/about-us'>Về chúng tôi</a></li>
+                    <li><a href='/' className='a-header'>Trang chủ</a></li>
+                    <li><a href='/search-ticket'className='a-header'>Tra cứu</a></li>
+                    <li><a href='/explore'className='a-header'>Khám phá</a></li>
+                    <li><a href='/about-us'className='a-header' >Về chúng tôi</a></li>
                 </ul>
                 <div className='navbar-login'>
-                <a href='/sign-in'>Đăng nhập</a>
-                <a href='/sign-up'>Đăng ký</a>
+                <a href='/sign-in' className='a-header'>Đăng nhập</a>
+                <a href='/sign-up'className='a-header'>Đăng ký</a>
                 </div>
             </div>
         </header>

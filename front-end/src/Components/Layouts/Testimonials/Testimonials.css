@@ -129,8 +129,6 @@
   }
   #test{
     margin-bottom: 50px;
-  }
-  h1{
     text-align: center;
     margin-top: 20px;
     font-family: var(--font-secondary);

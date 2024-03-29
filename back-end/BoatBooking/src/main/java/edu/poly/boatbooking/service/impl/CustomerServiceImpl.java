@@ -24,9 +24,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDto createCustomer(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto);
-        Customer saveCustomer = customerRepository.save(customer);
-
-        return CustomerMapper.mapToCustomerDto(saveCustomer);
+        if (!customerRepository.existsById(customer.getId())) {
+            Customer saveCustomer = customerRepository.save(customer);
+            return CustomerMapper.mapToCustomerDto(saveCustomer);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -47,12 +50,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDto updatedCustomer(Long customerId, CustomerDto updatedCustomer) {
         Customer customer = customerRepository.findById(customerId).orElseThrow(
-                () -> new ResourceNotFoundException("Boat is not exists with given id: " + customerId)
+                () -> new ResourceNotFoundException("Customer is not exists with given id: " + customerId)
         );
         customer.setName(updatedCustomer.getName());
         customer.setNumId(updatedCustomer.getNum_id());
         customer.setBirth(updatedCustomer.getBirth());
         customer.setAddress(updatedCustomer.getAddress());
+        customer.setEmail(updatedCustomer.getEmail());
 
         Customer updatedCustomerObj = customerRepository.save(customer);
         return CustomerMapper.mapToCustomerDto(updatedCustomerObj);

@@ -28,9 +28,9 @@ const TicketReview = () => {
                 departureTime: selectedCustomerInfo.departureTime || '',
                 arrivalTime: selectedCustomerInfo.arrivalTime || '',
                 seatId: selectedCustomerInfo.seatId || '',
-                flyId: selectedCustomerInfo.flyId || '',
-                name: selectedCustomerInfo.name || '',
-                cccd: selectedCustomerInfo.cccd || ''
+                flyId: selectedCustomerInfo.boat_name || '',
+                name: selectedCustomerInfo.customerName || '',
+                cccd: selectedCustomerInfo.numId || ''
             });
         
         console.log("setTicketReviewDetails:", ticketReviewDetails);
@@ -105,7 +105,7 @@ const TicketReview = () => {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="flightCode">Mã chuyến bay:</label>
+                                        <label htmlFor="flightCode">Mã tàu:</label>
                                         <input
                                             type="text"
                                             className="form-control"
